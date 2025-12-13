@@ -1,141 +1,131 @@
 export default function Home() {
   return (
-    <main style={{ background: "#0b0f1a", color: "#fff", fontFamily: "Arial" }}>
+    <main style={page}>
 
       {/* HERO */}
       <section style={hero}>
-        <h1 style={{ fontSize: "48px", maxWidth: "800px" }}>
-          Panel SMM automático para crecer en redes sociales
+        <h1 style={h1}>
+          Compra seguidores y likes reales al mejor precio
         </h1>
         <p style={heroText}>
-          Compra seguidores, likes y visualizaciones sin registro.
-          Entrega inmediata. Plataforma activa 24/7.
+          Crece en Instagram, TikTok y YouTube sin registro.
+          Entrega rápida · Pago seguro · Soporte activo
         </p>
-        <a href="/order" style={ctaPrimary}>Comprar ahora</a>
+        <a href="/order" style={heroBtn}>Comprar ahora</a>
       </section>
 
-      {/* SERVICES GRID */}
+      {/* SERVICES */}
       <section style={section}>
-        <h2 style={title}>Servicios más vendidos</h2>
+        <h2 style={h2}>Nuestros servicios</h2>
 
         <div style={grid}>
-          <ServiceCard
-            platform="Instagram"
+          <Service
+            title="Instagram Seguidores"
+            desc="Seguidores de alta calidad para perfiles personales y negocios."
             price="Desde 1,99€"
-            features={["Seguidores", "Likes", "Views"]}
           />
-          <ServiceCard
-            platform="TikTok"
+          <Service
+            title="Instagram Likes"
+            desc="Likes rápidos para mejorar alcance y credibilidad."
             price="Desde 0,99€"
-            features={["Views", "Likes", "Followers"]}
           />
-          <ServiceCard
-            platform="YouTube"
+          <Service
+            title="TikTok Views"
+            desc="Visualizaciones reales para vídeos virales."
+            price="Desde 0,79€"
+          />
+          <Service
+            title="YouTube Views"
+            desc="Aumenta reproducciones y posiciona tus vídeos."
             price="Desde 1,49€"
-            features={["Views", "Likes", "Subs"]}
           />
         </div>
       </section>
 
-      {/* PRICING */}
-      <section style={sectionAlt}>
-        <h2 style={title}>Precios claros y sin sorpresas</h2>
+      {/* WHY */}
+      <section style={why}>
+        <h2 style={h2}>¿Por qué elegirnos?</h2>
 
-        <div style={grid}>
-          <PriceBox
-            name="Starter"
-            price="0,79€"
-            text="Ideal para probar el servicio"
-          />
-          <PriceBox
-            name="Popular"
-            price="1,49€"
-            text="El más elegido por creadores"
-            highlight
-          />
-          <PriceBox
-            name="Reseller"
-            price="Panel price"
-            text="Para agencias y revendedores"
-          />
+        <div style={whyGrid}>
+          <Why text="Entrega rápida y automática" />
+          <Why text="Sin registro ni cuenta" />
+          <Why text="Pagos 100% seguros" />
+          <Why text="Precios competitivos" />
+          <Why text="Servicios estables" />
+          <Why text="Soporte profesional" />
         </div>
       </section>
 
-      {/* BENEFITS */}
-      <section style={section}>
-        <h2 style={title}>Por qué elegir SMM Express</h2>
-
-        <div style={grid}>
-          <Benefit text="Entrega automática en minutos" />
-          <Benefit text="Sin contraseña ni registro" />
-          <Benefit text="Pagos 100% seguros" />
-          <Benefit text="Servicios testeados y estables" />
-          <Benefit text="Soporte activo 24/7" />
-          <Benefit text="Precios de panel profesional" />
-        </div>
-      </section>
-
-      {/* FINAL CTA */}
-      <section style={finalCta}>
-        <h2 style={{ fontSize: "36px" }}>
-          Empieza ahora. Resultados en minutos.
+      {/* CTA */}
+      <section style={cta}>
+        <h2 style={ctaTitle}>
+          Empieza a crecer hoy mismo
         </h2>
-        <a href="/order" style={ctaPrimary}>Comprar sin registro</a>
+        <a href="/order" style={ctaBtn}>Hacer un pedido</a>
       </section>
 
     </main>
   );
 }
 
-/* COMPONENTES VISUALES */
+/* COMPONENTES */
 
-function ServiceCard({ platform, price, features }) {
+function Service({ title, desc, price }) {
   return (
     <div style={card}>
-      <h3>{platform}</h3>
-      <p style={{ color: "#22c55e" }}>{price}</p>
-      <ul>
-        {features.map(f => <li key={f}>{f}</li>)}
-      </ul>
-      <a href="/order" style={link}>Comprar →</a>
+      <h3 style={cardTitle}>{title}</h3>
+      <p style={cardDesc}>{desc}</p>
+      <p style={price}>{price}</p>
+      <a href="/order" style={buy}>Comprar</a>
     </div>
   );
 }
 
-function PriceBox({ name, price, text, highlight }) {
+function Why({ text }) {
   return (
-    <div style={{
-      ...card,
-      border: highlight ? "2px solid #22c55e" : "1px solid #020617"
-    }}>
-      <h3>{name}</h3>
-      <h2 style={{ color: "#22c55e" }}>{price}</h2>
-      <p>{text}</p>
-      <a href="/order" style={ctaSmall}>Elegir</a>
-    </div>
-  );
-}
-
-function Benefit({ text }) {
-  return (
-    <div style={benefit}>
+    <div style={whyCard}>
       ✔ {text}
     </div>
   );
 }
 
-/* STYLES */
+/* ESTILOS */
+
+const page = {
+  fontFamily: "Arial",
+  background: "#f8fafc",
+  color: "#0f172a"
+};
 
 const hero = {
-  padding: "100px 20px",
-  textAlign: "center",
-  background: "linear-gradient(180deg,#020617,#0b0f1a)"
+  background: "#ffffff",
+  padding: "90px 20px",
+  textAlign: "center"
+};
+
+const h1 = {
+  fontSize: "42px",
+  maxWidth: "800px",
+  margin: "0 auto"
 };
 
 const heroText = {
-  color: "#cbd5e1",
+  marginTop: "20px",
+  fontSize: "18px",
+  color: "#475569",
   maxWidth: "700px",
-  margin: "20px auto 40px"
+  marginInline: "auto"
+};
+
+const heroBtn = {
+  display: "inline-block",
+  marginTop: "35px",
+  background: "#2563eb",
+  color: "#fff",
+  padding: "14px 34px",
+  borderRadius: "8px",
+  textDecoration: "none",
+  fontWeight: "bold"
 };
 
 const section = {
@@ -144,62 +134,89 @@ const section = {
   margin: "0 auto"
 };
 
-const sectionAlt = {
-  padding: "80px 20px",
-  background: "#020617"
-};
-
-const title = {
-  fontSize: "32px",
+const h2 = {
   textAlign: "center",
-  marginBottom: "40px"
+  fontSize: "32px",
+  marginBottom: "50px"
 };
 
 const grid = {
   display: "grid",
-  gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
-  gap: "25px"
+  gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))",
+  gap: "30px"
 };
 
 const card = {
-  background: "#020617",
+  background: "#ffffff",
   padding: "30px",
-  borderRadius: "12px"
+  borderRadius: "14px",
+  boxShadow: "0 10px 25px rgba(0,0,0,0.05)",
+  textAlign: "center"
 };
 
-const benefit = {
-  background: "#020617",
-  padding: "20px",
-  borderRadius: "10px"
+const cardTitle = {
+  fontSize: "20px",
+  marginBottom: "10px"
 };
 
-const finalCta = {
-  padding: "100px 20px",
-  textAlign: "center",
-  background: "#020617"
+const cardDesc = {
+  fontSize: "15px",
+  color: "#475569",
+  marginBottom: "20px"
 };
 
-const ctaPrimary = {
-  background: "#22c55e",
-  color: "#000",
-  padding: "14px 30px",
-  borderRadius: "8px",
-  textDecoration: "none",
-  fontWeight: "bold"
+const price = {
+  fontSize: "20px",
+  fontWeight: "bold",
+  marginBottom: "20px"
 };
 
-const ctaSmall = {
+const buy = {
   display: "inline-block",
-  marginTop: "15px",
   background: "#22c55e",
-  color: "#000",
-  padding: "10px 20px",
+  color: "#fff",
+  padding: "10px 22px",
   borderRadius: "6px",
   textDecoration: "none"
 };
 
-const link = {
-  color: "#22c55e",
-  marginTop: "10px",
-  display: "inline-block"
+const why = {
+  background: "#ffffff",
+  padding: "80px 20px"
+};
+
+const whyGrid = {
+  maxWidth: "1000px",
+  margin: "0 auto",
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))",
+  gap: "20px"
+};
+
+const whyCard = {
+  background: "#f1f5f9",
+  padding: "20px",
+  borderRadius: "10px",
+  textAlign: "center"
+};
+
+const cta = {
+  background: "#2563eb",
+  color: "#fff",
+  padding: "90px 20px",
+  textAlign: "center"
+};
+
+const ctaTitle = {
+  fontSize: "36px",
+  marginBottom: "30px"
+};
+
+const ctaBtn = {
+  background: "#22c55e",
+  padding: "14px 34px",
+  borderRadius: "8px",
+  color: "#fff",
+  textDecoration: "none",
+  fontWeight: "bold"
 };
