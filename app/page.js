@@ -1,140 +1,108 @@
-export default function Home() {
+export default function Dashboard() {
   return (
-    <main style={{ background: "#0b0f1a", color: "#ffffff", minHeight: "100vh", fontFamily: "Arial" }}>
+    <div style={container}>
       
-      {/* HERO */}
-      <section style={{ padding: "80px 20px", textAlign: "center" }}>
-        <h1 style={{ fontSize: "48px", marginBottom: "20px" }}>
-          Servicios SMM automáticos en menos de 60 segundos
-        </h1>
-        <p style={{ fontSize: "18px", color: "#cbd5e1", maxWidth: "700px", margin: "0 auto 30px" }}>
-          Seguidores, likes y visualizaciones para Instagram, TikTok y YouTube.
-          Entrega instantánea. Sin contraseña. Plataforma 24/7.
+      {/* SIDEBAR */}
+      <aside style={sidebar}>
+        <h2 style={{ color: "#22c55e" }}>SMM Express</h2>
+        <nav style={menu}>
+          <a href="/dashboard" style={item}>Dashboard</a>
+          <a href="/dashboard" style={item}>Nuevo pedido</a>
+          <a href="/dashboard/orders" style={item}>Mis pedidos</a>
+          <a href="/dashboard/balance" style={item}>Añadir saldo</a>
+          <a href="/dashboard/support" style={item}>Soporte</a>
+        </nav>
+      </aside>
+
+      {/* MAIN */}
+      <main style={main}>
+        <h1>Nuevo pedido</h1>
+        <p style={{ color: "#94a3b8" }}>
+          Selecciona el servicio, introduce el enlace y crea tu pedido.
         </p>
-        <div>
-          <a href="/dashboard" style={btnPrimary}>Ver servicios</a>
-          <a href="/dashboard" style={btnSecondary}>Acceder al panel</a>
+
+        <div style={card}>
+          <label>Servicio</label>
+          <select style={input}>
+            <option>Instagram – Seguidores</option>
+            <option>Instagram – Likes</option>
+            <option>TikTok – Views</option>
+            <option>YouTube – Views</option>
+          </select>
+
+          <label>Cantidad</label>
+          <input type="number" placeholder="Ej: 1000" style={input} />
+
+          <label>Enlace</label>
+          <input type="text" placeholder="https://..." style={input} />
+
+          <button style={button}>Crear pedido</button>
         </div>
-      </section>
+      </main>
 
-      {/* STATS */}
-      <section style={statsSection}>
-        <Stat number="+120.000" text="Pedidos entregados" />
-        <Stat number="99.9%" text="Uptime del sistema" />
-        <Stat number="24/7" text="Soporte activo" />
-      </section>
-
-      {/* SERVICES */}
-      <section style={{ padding: "60px 20px", maxWidth: "1200px", margin: "0 auto" }}>
-        <h2 style={sectionTitle}>Servicios principales</h2>
-        <div style={grid}>
-          <Service title="Instagram" items={["Seguidores", "Likes", "Visualizaciones"]} />
-          <Service title="TikTok" items={["Views", "Likes", "Followers"]} />
-          <Service title="YouTube" items={["Views", "Likes", "Suscriptores"]} />
-        </div>
-      </section>
-
-      {/* HOW IT WORKS */}
-      <section style={{ padding: "60px 20px", background: "#0f172a" }}>
-        <h2 style={sectionTitle}>Cómo funciona</h2>
-        <div style={grid}>
-          <Step number="1" text="Elige el servicio" />
-          <Step number="2" text="Introduce el enlace" />
-          <Step number="3" text="Recibe resultados al instante" />
-        </div>
-      </section>
-
-      {/* ADVANTAGES */}
-      <section style={{ padding: "60px 20px", maxWidth: "900px", margin: "0 auto" }}>
-        <h2 style={sectionTitle}>Por qué elegirnos</h2>
-        <ul style={{ listStyle: "none", padding: 0, lineHeight: "2" }}>
-          <li>✔ Entrega automática</li>
-          <li>✔ Sin contraseña</li>
-          <li>✔ Sin riesgo</li>
-          <li>✔ Precios de panel SMM</li>
-          <li>✔ API para revendedores</li>
-          <li>✔ Pagos seguros</li>
-        </ul>
-      </section>
-
-      {/* CTA */}
-      <section style={{ padding: "80px 20px", textAlign: "center", background: "#020617" }}>
-        <h2 style={{ fontSize: "36px", marginBottom: "20px" }}>
-          Empieza ahora. Resultados en minutos.
-        </h2>
-        <a href="/dashboard" style={btnPrimary}>Crear cuenta / Ver servicios</a>
-      </section>
-
-    </main>
+    </div>
   );
 }
 
-/* COMPONENTES */
+/* STYLES */
 
-const btnPrimary = {
-  background: "#22c55e",
-  color: "#000",
-  padding: "14px 28px",
-  borderRadius: "8px",
-  marginRight: "10px",
-  textDecoration: "none",
-  fontWeight: "bold"
+const container = {
+  display: "flex",
+  minHeight: "100vh",
+  background: "#0b0f1a",
+  color: "#fff"
 };
 
-const btnSecondary = {
-  border: "1px solid #22c55e",
-  color: "#22c55e",
-  padding: "14px 28px",
-  borderRadius: "8px",
+const sidebar = {
+  width: "240px",
+  background: "#020617",
+  padding: "30px",
+  borderRight: "1px solid #020617"
+};
+
+const menu = {
+  display: "flex",
+  flexDirection: "column",
+  marginTop: "30px",
+  gap: "15px"
+};
+
+const item = {
+  color: "#cbd5e1",
   textDecoration: "none"
 };
 
-const sectionTitle = {
-  fontSize: "32px",
-  textAlign: "center",
-  marginBottom: "40px"
+const main = {
+  flex: 1,
+  padding: "40px"
 };
 
-const grid = {
-  display: "grid",
-  gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-  gap: "20px"
-};
-
-const statsSection = {
+const card = {
+  background: "#020617",
+  padding: "30px",
+  borderRadius: "12px",
+  maxWidth: "500px",
+  marginTop: "30px",
   display: "flex",
-  justifyContent: "center",
-  gap: "40px",
-  padding: "40px 20px",
-  background: "#020617"
+  flexDirection: "column",
+  gap: "15px"
 };
 
-function Stat({ number, text }) {
-  return (
-    <div style={{ textAlign: "center" }}>
-      <h3 style={{ fontSize: "28px" }}>{number}</h3>
-      <p style={{ color: "#94a3b8" }}>{text}</p>
-    </div>
-  );
-}
+const input = {
+  padding: "10px",
+  borderRadius: "6px",
+  border: "1px solid #020617",
+  background: "#0f172a",
+  color: "#fff"
+};
 
-function Service({ title, items }) {
-  return (
-    <div style={{ background: "#020617", padding: "30px", borderRadius: "12px" }}>
-      <h3>{title}</h3>
-      <ul>
-        {items.map(i => <li key={i}>{i}</li>)}
-      </ul>
-      <a href="/dashboard" style={{ color: "#22c55e" }}>Comprar ahora →</a>
-    </div>
-  );
-}
-
-function Step({ number, text }) {
-  return (
-    <div style={{ background: "#020617", padding: "30px", borderRadius: "12px", textAlign: "center" }}>
-      <h3 style={{ fontSize: "28px" }}>{number}</h3>
-      <p>{text}</p>
-    </div>
-  );
-}
+const button = {
+  marginTop: "10px",
+  padding: "12px",
+  background: "#22c55e",
+  color: "#000",
+  border: "none",
+  borderRadius: "6px",
+  fontWeight: "bold",
+  cursor: "pointer"
+};
