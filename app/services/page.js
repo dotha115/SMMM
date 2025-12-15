@@ -57,6 +57,17 @@ export default function Services() {
           "Compartidos Facebook"
         ]}
       />
+<ServiceBlock
+  title="Kick & Twitch"
+  color="#9146ff"
+  bg="#f5f3ff"
+  services={[
+    "Seguidores Twitch",
+    "Visualizaciones Twitch",
+    "Seguidores Kick",
+    "Visualizaciones Kick"
+  ]}
+/>
 
     </main>
   );
