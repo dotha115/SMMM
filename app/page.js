@@ -84,7 +84,21 @@ export default function Home() {
 
 function Step({ number, title, text }) {
   return (
-    <div style={card}>
+    <div
+      style={card}
+      onMouseEnter={(e) =>
+        Object.assign(e.currentTarget.style, {
+          transform: "translateY(-8px)",
+          boxShadow: "0 20px 40px rgba(0,0,0,0.15)"
+        })
+      }
+      onMouseLeave={(e) =>
+        Object.assign(e.currentTarget.style, {
+          transform: "none",
+          boxShadow: "0 10px 30px rgba(0,0,0,0.08)"
+        })
+      }
+    >
       <div style={stepNum}>{number}</div>
       <h3 style={cardTitle}>{title}</h3>
       <p style={cardText}>{text}</p>
