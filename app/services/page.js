@@ -59,26 +59,30 @@ export default function Services() {
       />
 <section style={{ padding: "70px 20px", background: "#f8fafc" }}>
   <h2 style={{ fontSize: "34px", textAlign: "center", marginBottom: "40px" }}>
-    Kick & Twitch
+    Streaming (Twitch & Kick)
   </h2>
 
   <div style={grid}>
-    
+
     {/* TWITCH */}
     <div style={{ ...card, borderColor: "#9146ff" }}>
       <div style={{ ...icon, background: "#9146ff" }}>T</div>
       <h3 style={{ ...cardTitle, color: "#9146ff" }}>Seguidores Twitch</h3>
-      <p style={cardText}>Aumenta tu audiencia en Twitch.</p>
+      <p style={cardText}>Haz crecer tu canal en Twitch.</p>
       <p style={{ ...price, color: "#9146ff" }}>Desde 0,99€</p>
-      <a href="/order" style={{ ...buy, background: "#9146ff" }}>Comprar</a>
+      <a href="/order" style={{ ...buy, background: "#9146ff" }}>
+        Comprar
+      </a>
     </div>
 
     <div style={{ ...card, borderColor: "#9146ff" }}>
       <div style={{ ...icon, background: "#9146ff" }}>T</div>
       <h3 style={{ ...cardTitle, color: "#9146ff" }}>Visualizaciones Twitch</h3>
-      <p style={cardText}>Más visibilidad en tus directos.</p>
+      <p style={cardText}>Más visibilidad en directos.</p>
       <p style={{ ...price, color: "#9146ff" }}>Desde 0,79€</p>
-      <a href="/order" style={{ ...buy, background: "#9146ff" }}>Comprar</a>
+      <a href="/order" style={{ ...buy, background: "#9146ff" }}>
+        Comprar
+      </a>
     </div>
 
     {/* KICK */}
@@ -87,7 +91,9 @@ export default function Services() {
       <h3 style={{ ...cardTitle, color: "#00e701" }}>Seguidores Kick</h3>
       <p style={cardText}>Haz crecer tu canal en Kick.</p>
       <p style={{ ...price, color: "#00e701" }}>Desde 0,99€</p>
-      <a href="/order" style={{ ...buy, background: "#00e701" }}>Comprar</a>
+      <a href="/order" style={{ ...buy, background: "#00e701" }}>
+        Comprar
+      </a>
     </div>
 
     <div style={{ ...card, borderColor: "#00e701" }}>
@@ -95,12 +101,13 @@ export default function Services() {
       <h3 style={{ ...cardTitle, color: "#00e701" }}>Visualizaciones Kick</h3>
       <p style={cardText}>Impulsa tus directos en Kick.</p>
       <p style={{ ...price, color: "#00e701" }}>Desde 0,79€</p>
-      <a href="/order" style={{ ...buy, background: "#00e701" }}>Comprar</a>
+      <a href="/order" style={{ ...buy, background: "#00e701" }}>
+        Comprar
+      </a>
     </div>
 
   </div>
 </section>
-
     </main>
   );
 }
