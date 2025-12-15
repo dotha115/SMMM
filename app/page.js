@@ -4,71 +4,57 @@ export default function Home() {
 
       {/* HERO */}
       <section style={hero}>
-        <h1 style={h1}>
-          Comprar seguidores, likes y visitas al mejor precio
-        </h1>
+        <h1 style={heroTitle}>Compra seguidores y crece en redes sociales</h1>
         <p style={heroText}>
-          Aumenta tu popularidad en redes sociales de forma rápida y segura.
-          Servicios activos 24/7 · Sin registro · Entrega automática.
+          Servicios rápidos, seguros y sin registro. Empieza ahora.
         </p>
-        <div style={heroBtns}>
-          <a href="/order" style={btnPrimary}>Comprar seguidores</a>
-          <a href="/services" style={btnSecondary}>Ver servicios</a>
-        </div>
+        <a href="/services" style={heroBtn}>Ver servicios</a>
       </section>
 
-      {/* SERVICES */}
+      {/* SERVICES PREVIEW */}
       <section style={section}>
         <h2 style={h2}>Nuestros servicios más populares</h2>
 
         <div style={grid}>
-          <Service title="Seguidores Instagram" text="Mejora tu imagen y credibilidad con seguidores de alta calidad." />
-          <Service title="Likes Instagram" text="Aumenta el alcance de tus publicaciones y genera más interacción." />
-          <Service title="Visualizaciones TikTok" text="Haz que tus vídeos se vuelvan virales con miles de visitas reales." />
-          <Service title="Visualizaciones YouTube" text="Posiciona tus vídeos y aumenta tu autoridad en YouTube." />
-          <Service title="Seguidores TikTok" text="Gana seguidores y destaca frente a otros perfiles." />
-          <Service title="Likes Facebook" text="Incrementa la interacción en tus publicaciones y páginas." />
+
+          <ServiceCard
+            title="Instagram"
+            color="#e1306c"
+            bg="#fff1f6"
+            desc="Seguidores, likes, visualizaciones y comentarios."
+          />
+
+          <ServiceCard
+            title="TikTok"
+            color="#000000"
+            bg="#f1f5f9"
+            desc="Impulsa tus vídeos y gana visibilidad."
+          />
+
+          <ServiceCard
+            title="YouTube"
+            color="#ff0000"
+            bg="#fff5f5"
+            desc="Visualizaciones, likes y suscriptores reales."
+          />
+
+          <ServiceCard
+            title="Facebook"
+            color="#1877f2"
+            bg="#eff6ff"
+            desc="Likes, seguidores y reacciones."
+          />
+
         </div>
       </section>
 
-      {/* TEXT SEO */}
-      <section style={seo}>
-        <h2 style={h2}>Comprar seguidores reales y baratos</h2>
-        <p style={p}>
-          Comprar seguidores es una estrategia cada vez más utilizada por influencers,
-          empresas y creadores de contenido que buscan aumentar su visibilidad en redes sociales.
-          En nuestra plataforma puedes comprar seguidores, likes y visualizaciones de forma segura,
-          sin necesidad de registro y con entrega rápida.
-        </p>
-        <p style={p}>
-          Ofrecemos servicios para Instagram, TikTok, YouTube y otras redes sociales.
-          Nuestros precios son competitivos y nuestros servicios están diseñados para
-          ofrecer estabilidad y resultados visibles desde el primer momento.
-        </p>
-      </section>
-
-      {/* WHY */}
-      <section style={why}>
-        <h2 style={h2}>¿Por qué comprar seguidores con nosotros?</h2>
-
-        <div style={whyGrid}>
-          <Why text="Entrega rápida y automática" />
-          <Why text="Sin necesidad de crear cuenta" />
-          <Why text="Pagos seguros y protegidos" />
-          <Why text="Soporte profesional" />
-          <Why text="Precios económicos" />
-          <Why text="Servicios activos 24/7" />
-        </div>
-      </section>
-
-      {/* FINAL CTA */}
+      {/* CTA */}
       <section style={cta}>
-        <h2 style={ctaTitle}>
-          Empieza hoy a crecer en redes sociales
-        </h2>
-        <a href="/order" style={ctaBtn}>
-          Comprar ahora
-        </a>
+        <h2 style={ctaTitle}>Empieza a crecer hoy</h2>
+        <p style={ctaText}>
+          Compra en segundos sin crear cuenta.
+        </p>
+        <a href="/services" style={ctaBtn}>Comprar ahora</a>
       </section>
 
     </main>
@@ -77,20 +63,15 @@ export default function Home() {
 
 /* COMPONENTES */
 
-function Service({ title, text }) {
+function ServiceCard({ title, desc, color, bg }) {
   return (
-    <div style={card}>
-      <h3>{title}</h3>
-      <p style={cardText}>{text}</p>
-      <a href="/order" style={cardBtn}>Comprar</a>
-    </div>
-  );
-}
-
-function Why({ text }) {
-  return (
-    <div style={whyCard}>
-      ✔ {text}
+    <div style={{ ...card, background: bg, borderColor: color }}>
+      <div style={{ ...icon, background: color }}>{title[0]}</div>
+      <h3 style={{ ...cardTitle, color }}>{title}</h3>
+      <p style={cardText}>{desc}</p>
+      <a href="/services" style={{ ...cardBtn, background: color }}>
+        Ver servicios
+      </a>
     </div>
   );
 }
@@ -104,132 +85,105 @@ const page = {
 };
 
 const hero = {
-  background: "linear-gradient(180deg,#2563eb,#1e40af)",
+  background: "linear-gradient(135deg,#0f172a,#020617)",
   color: "#ffffff",
-  padding: "100px 20px",
+  padding: "110px 20px",
   textAlign: "center"
 };
 
-const h1 = {
-  fontSize: "44px",
-  maxWidth: "900px",
-  margin: "0 auto"
+const heroTitle = {
+  fontSize: "46px",
+  marginBottom: "20px"
 };
 
 const heroText = {
-  marginTop: "20px",
   fontSize: "18px",
-  maxWidth: "800px",
-  marginInline: "auto"
+  opacity: 0.9,
+  marginBottom: "30px"
 };
 
-const heroBtns = {
-  marginTop: "40px",
-  display: "flex",
-  justifyContent: "center",
-  gap: "20px",
-  flexWrap: "wrap"
-};
-
-const btnPrimary = {
+const heroBtn = {
   background: "#22c55e",
+  padding: "14px 36px",
+  borderRadius: "8px",
   color: "#ffffff",
-  padding: "14px 30px",
-  borderRadius: "8px",
-  textDecoration: "none",
-  fontWeight: "bold"
-};
-
-const btnSecondary = {
-  background: "#ffffff",
-  color: "#1e40af",
-  padding: "14px 30px",
-  borderRadius: "8px",
-  textDecoration: "none",
-  fontWeight: "bold"
+  fontWeight: "bold",
+  textDecoration: "none"
 };
 
 const section = {
-  padding: "80px 20px",
-  maxWidth: "1200px",
-  margin: "0 auto"
-};
-
-const h2 = {
-  fontSize: "32px",
-  marginBottom: "40px",
+  padding: "90px 20px",
   textAlign: "center"
 };
 
+const h2 = {
+  fontSize: "36px",
+  marginBottom: "50px"
+};
+
 const grid = {
+  maxWidth: "1100px",
+  margin: "0 auto",
   display: "grid",
-  gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))",
+  gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
   gap: "30px"
 };
 
 const card = {
-  background: "#f8fafc",
-  padding: "30px",
-  borderRadius: "12px",
-  textAlign: "center",
-  boxShadow: "0 8px 20px rgba(0,0,0,0.05)"
+  padding: "35px",
+  borderRadius: "18px",
+  border: "2px solid",
+  boxShadow: "0 10px 30px rgba(0,0,0,0.08)"
+};
+
+const icon = {
+  width: "52px",
+  height: "52px",
+  borderRadius: "50%",
+  color: "#ffffff",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  fontWeight: "bold",
+  fontSize: "20px",
+  margin: "0 auto 18px"
+};
+
+const cardTitle = {
+  fontSize: "20px",
+  marginBottom: "10px"
 };
 
 const cardText = {
   color: "#475569",
-  margin: "15px 0"
+  fontSize: "14px",
+  marginBottom: "18px"
 };
 
 const cardBtn = {
   display: "inline-block",
-  background: "#2563eb",
+  padding: "10px 26px",
   color: "#ffffff",
-  padding: "10px 22px",
   borderRadius: "6px",
+  fontWeight: "bold",
   textDecoration: "none"
 };
 
-const seo = {
-  background: "#f1f5f9",
-  padding: "80px 20px"
-};
-
-const p = {
-  maxWidth: "900px",
-  margin: "0 auto 20px",
-  fontSize: "16px",
-  color: "#475569"
-};
-
-const why = {
-  padding: "80px 20px"
-};
-
-const whyGrid = {
-  maxWidth: "1000px",
-  margin: "0 auto",
-  display: "grid",
-  gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))",
-  gap: "20px"
-};
-
-const whyCard = {
-  background: "#e2e8f0",
-  padding: "20px",
-  borderRadius: "10px",
-  textAlign: "center"
-};
-
 const cta = {
-  background: "#1e40af",
+  background: "#0f172a",
   color: "#ffffff",
   padding: "90px 20px",
   textAlign: "center"
 };
 
 const ctaTitle = {
-  fontSize: "36px",
-  marginBottom: "30px"
+  fontSize: "34px",
+  marginBottom: "15px"
+};
+
+const ctaText = {
+  opacity: 0.9,
+  marginBottom: "25px"
 };
 
 const ctaBtn = {
@@ -237,6 +191,6 @@ const ctaBtn = {
   padding: "14px 36px",
   borderRadius: "8px",
   color: "#ffffff",
-  textDecoration: "none",
-  fontWeight: "bold"
+  fontWeight: "bold",
+  textDecoration: "none"
 };
