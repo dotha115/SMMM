@@ -6,71 +6,57 @@ export default function Services() {
       <section style={header}>
         <h1 style={h1}>Servicios de redes sociales</h1>
         <p style={headerText}>
-          Compra seguidores, likes y visualizaciones para Instagram, TikTok,
-          YouTube y más. Servicios rápidos, seguros y sin registro.
+          Elige el servicio que necesitas y empieza a crecer hoy mismo.
         </p>
       </section>
 
-      {/* INSTAGRAM */}
-      <ServiceSection
-        title="Servicios para Instagram"
+      <ServiceBlock
+        title="Instagram"
+        color="#e1306c"
+        bg="#fff1f6"
         services={[
-          "Comprar seguidores Instagram",
-          "Comprar likes Instagram",
-          "Comprar visualizaciones Instagram",
-          "Comprar comentarios Instagram",
-          "Comprar guardados Instagram"
+          "Seguidores Instagram",
+          "Likes Instagram",
+          "Visualizaciones Instagram",
+          "Comentarios Instagram"
         ]}
       />
 
-      {/* TIKTOK */}
-      <ServiceSection
-        title="Servicios para TikTok"
+      <ServiceBlock
+        title="TikTok"
+        color="#000000"
+        bg="#f1f5f9"
         services={[
-          "Comprar seguidores TikTok",
-          "Comprar likes TikTok",
-          "Comprar visualizaciones TikTok",
-          "Comprar compartidos TikTok"
+          "Seguidores TikTok",
+          "Likes TikTok",
+          "Visualizaciones TikTok",
+          "Compartidos TikTok"
         ]}
       />
 
-      {/* YOUTUBE */}
-      <ServiceSection
-        title="Servicios para YouTube"
+      <ServiceBlock
+        title="YouTube"
+        color="#ff0000"
+        bg="#fff5f5"
         services={[
-          "Comprar visualizaciones YouTube",
-          "Comprar likes YouTube",
-          "Comprar suscriptores YouTube",
-          "Comprar horas de visualización"
+          "Visualizaciones YouTube",
+          "Likes YouTube",
+          "Suscriptores YouTube",
+          "Horas de visualización"
         ]}
       />
 
-      {/* FACEBOOK */}
-      <ServiceSection
-        title="Servicios para Facebook"
+      <ServiceBlock
+        title="Facebook"
+        color="#1877f2"
+        bg="#eff6ff"
         services={[
-          "Comprar likes Facebook",
-          "Comprar seguidores Facebook",
-          "Comprar reacciones Facebook",
-          "Comprar compartidos Facebook"
+          "Likes Facebook",
+          "Seguidores Facebook",
+          "Reacciones Facebook",
+          "Compartidos Facebook"
         ]}
       />
-
-      {/* SEO TEXT */}
-      <section style={seo}>
-        <h2 style={h2}>Comprar seguidores y likes de forma segura</h2>
-        <p style={p}>
-          En nuestra plataforma puedes comprar seguidores, likes y visitas para
-          redes sociales de forma rápida y segura. Ofrecemos servicios de alta
-          calidad para mejorar la visibilidad de perfiles personales, marcas e
-          influencers.
-        </p>
-        <p style={p}>
-          Todos nuestros servicios funcionan sin necesidad de registro y con
-          entrega automática. Los pedidos se procesan en minutos y contamos con
-          soporte profesional para resolver cualquier duda.
-        </p>
-      </section>
 
     </main>
   );
@@ -78,20 +64,25 @@ export default function Services() {
 
 /* COMPONENTES */
 
-function ServiceSection({ title, services }) {
+function ServiceBlock({ title, services, color, bg }) {
   return (
-    <section style={section}>
-      <h2 style={h2}>{title}</h2>
+    <section style={{ ...section, background: bg }}>
+      <h2 style={{ ...h2, color }}>{title}</h2>
 
       <div style={grid}>
         {services.map((s) => (
-          <div key={s} style={card}>
+          <div key={s} style={{ ...card, borderColor: color }}>
+            <div style={{ ...icon, background: color }}>
+              {title[0]}
+            </div>
             <h3 style={cardTitle}>{s}</h3>
             <p style={cardText}>
-              Servicio rápido y estable. Ideal para mejorar tu presencia online.
+              Servicio rápido y estable para mejorar tu presencia.
             </p>
-            <p style={price}>Desde 0,79€</p>
-            <a href="/order" style={buy}>Comprar</a>
+            <p style={{ ...price, color }}>Desde 0,79€</p>
+            <a href="/order" style={{ ...buy, background: color }}>
+              Comprar
+            </a>
           </div>
         ))}
       </div>
@@ -108,8 +99,9 @@ const page = {
 };
 
 const header = {
-  background: "#f1f5f9",
-  padding: "80px 20px",
+  background: "#0f172a",
+  color: "#ffffff",
+  padding: "90px 20px",
   textAlign: "center"
 };
 
@@ -120,35 +112,47 @@ const h1 = {
 
 const headerText = {
   fontSize: "18px",
-  color: "#475569",
-  maxWidth: "800px",
-  margin: "0 auto"
+  opacity: 0.9
 };
 
 const section = {
-  padding: "70px 20px",
-  maxWidth: "1200px",
-  margin: "0 auto"
+  padding: "70px 20px"
 };
 
 const h2 = {
-  fontSize: "30px",
-  marginBottom: "40px",
-  textAlign: "center"
+  fontSize: "34px",
+  textAlign: "center",
+  marginBottom: "40px"
 };
 
 const grid = {
+  maxWidth: "1200px",
+  margin: "0 auto",
   display: "grid",
   gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))",
-  gap: "25px"
+  gap: "30px"
 };
 
 const card = {
-  background: "#f8fafc",
+  background: "#ffffff",
   padding: "30px",
-  borderRadius: "12px",
+  borderRadius: "16px",
+  border: "2px solid",
   textAlign: "center",
-  boxShadow: "0 6px 18px rgba(0,0,0,0.05)"
+  boxShadow: "0 10px 30px rgba(0,0,0,0.08)"
+};
+
+const icon = {
+  width: "48px",
+  height: "48px",
+  borderRadius: "50%",
+  color: "#ffffff",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  fontWeight: "bold",
+  fontSize: "18px",
+  margin: "0 auto 15px"
 };
 
 const cardTitle = {
@@ -170,21 +174,9 @@ const price = {
 
 const buy = {
   display: "inline-block",
-  background: "#2563eb",
+  padding: "10px 24px",
   color: "#ffffff",
-  padding: "10px 22px",
   borderRadius: "6px",
-  textDecoration: "none"
-};
-
-const seo = {
-  background: "#f8fafc",
-  padding: "80px 20px"
-};
-
-const p = {
-  maxWidth: "900px",
-  margin: "0 auto 20px",
-  fontSize: "16px",
-  color: "#475569"
+  textDecoration: "none",
+  fontWeight: "bold"
 };
