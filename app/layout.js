@@ -1,3 +1,4 @@
+import "./globals.css";
 export const metadata = {
   title: "Comprar Seguidores",
   description: "Compra seguidores, likes y visitas al mejor precio"
