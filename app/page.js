@@ -5,63 +5,70 @@ export default function Home() {
       {/* HERO */}
       <section style={hero}>
         <h1 style={h1}>
-          Compra seguidores y likes reales al mejor precio
+          Comprar seguidores, likes y visitas al mejor precio
         </h1>
         <p style={heroText}>
-          Crece en Instagram, TikTok y YouTube sin registro.
-          Entrega rápida · Pago seguro · Soporte activo
+          Aumenta tu popularidad en redes sociales de forma rápida y segura.
+          Servicios activos 24/7 · Sin registro · Entrega automática.
         </p>
-        <a href="/order" style={heroBtn}>Comprar ahora</a>
+        <div style={heroBtns}>
+          <a href="/order" style={btnPrimary}>Comprar seguidores</a>
+          <a href="/services" style={btnSecondary}>Ver servicios</a>
+        </div>
       </section>
 
       {/* SERVICES */}
       <section style={section}>
-        <h2 style={h2}>Nuestros servicios</h2>
+        <h2 style={h2}>Nuestros servicios más populares</h2>
 
         <div style={grid}>
-          <Service
-            title="Instagram Seguidores"
-            desc="Seguidores de alta calidad para perfiles personales y negocios."
-            price="Desde 1,99€"
-          />
-          <Service
-            title="Instagram Likes"
-            desc="Likes rápidos para mejorar alcance y credibilidad."
-            price="Desde 0,99€"
-          />
-          <Service
-            title="TikTok Views"
-            desc="Visualizaciones reales para vídeos virales."
-            price="Desde 0,79€"
-          />
-          <Service
-            title="YouTube Views"
-            desc="Aumenta reproducciones y posiciona tus vídeos."
-            price="Desde 1,49€"
-          />
+          <Service title="Seguidores Instagram" text="Mejora tu imagen y credibilidad con seguidores de alta calidad." />
+          <Service title="Likes Instagram" text="Aumenta el alcance de tus publicaciones y genera más interacción." />
+          <Service title="Visualizaciones TikTok" text="Haz que tus vídeos se vuelvan virales con miles de visitas reales." />
+          <Service title="Visualizaciones YouTube" text="Posiciona tus vídeos y aumenta tu autoridad en YouTube." />
+          <Service title="Seguidores TikTok" text="Gana seguidores y destaca frente a otros perfiles." />
+          <Service title="Likes Facebook" text="Incrementa la interacción en tus publicaciones y páginas." />
         </div>
+      </section>
+
+      {/* TEXT SEO */}
+      <section style={seo}>
+        <h2 style={h2}>Comprar seguidores reales y baratos</h2>
+        <p style={p}>
+          Comprar seguidores es una estrategia cada vez más utilizada por influencers,
+          empresas y creadores de contenido que buscan aumentar su visibilidad en redes sociales.
+          En nuestra plataforma puedes comprar seguidores, likes y visualizaciones de forma segura,
+          sin necesidad de registro y con entrega rápida.
+        </p>
+        <p style={p}>
+          Ofrecemos servicios para Instagram, TikTok, YouTube y otras redes sociales.
+          Nuestros precios son competitivos y nuestros servicios están diseñados para
+          ofrecer estabilidad y resultados visibles desde el primer momento.
+        </p>
       </section>
 
       {/* WHY */}
       <section style={why}>
-        <h2 style={h2}>¿Por qué elegirnos?</h2>
+        <h2 style={h2}>¿Por qué comprar seguidores con nosotros?</h2>
 
         <div style={whyGrid}>
           <Why text="Entrega rápida y automática" />
-          <Why text="Sin registro ni cuenta" />
-          <Why text="Pagos 100% seguros" />
-          <Why text="Precios competitivos" />
-          <Why text="Servicios estables" />
+          <Why text="Sin necesidad de crear cuenta" />
+          <Why text="Pagos seguros y protegidos" />
           <Why text="Soporte profesional" />
+          <Why text="Precios económicos" />
+          <Why text="Servicios activos 24/7" />
         </div>
       </section>
 
-      {/* CTA */}
+      {/* FINAL CTA */}
       <section style={cta}>
         <h2 style={ctaTitle}>
-          Empieza a crecer hoy mismo
+          Empieza hoy a crecer en redes sociales
         </h2>
-        <a href="/order" style={ctaBtn}>Hacer un pedido</a>
+        <a href="/order" style={ctaBtn}>
+          Comprar ahora
+        </a>
       </section>
 
     </main>
@@ -70,13 +77,12 @@ export default function Home() {
 
 /* COMPONENTES */
 
-function Service({ title, desc, price }) {
+function Service({ title, text }) {
   return (
     <div style={card}>
-      <h3 style={cardTitle}>{title}</h3>
-      <p style={cardDesc}>{desc}</p>
-      <p style={price}>{price}</p>
-      <a href="/order" style={buy}>Comprar</a>
+      <h3>{title}</h3>
+      <p style={cardText}>{text}</p>
+      <a href="/order" style={cardBtn}>Comprar</a>
     </div>
   );
 }
@@ -93,36 +99,51 @@ function Why({ text }) {
 
 const page = {
   fontFamily: "Arial",
-  background: "#f8fafc",
-  color: "#0f172a"
+  background: "#ffffff",
+  color: "#1e293b"
 };
 
 const hero = {
-  background: "#ffffff",
-  padding: "90px 20px",
+  background: "linear-gradient(180deg,#2563eb,#1e40af)",
+  color: "#ffffff",
+  padding: "100px 20px",
   textAlign: "center"
 };
 
 const h1 = {
-  fontSize: "42px",
-  maxWidth: "800px",
+  fontSize: "44px",
+  maxWidth: "900px",
   margin: "0 auto"
 };
 
 const heroText = {
   marginTop: "20px",
   fontSize: "18px",
-  color: "#475569",
-  maxWidth: "700px",
+  maxWidth: "800px",
   marginInline: "auto"
 };
 
-const heroBtn = {
-  display: "inline-block",
-  marginTop: "35px",
-  background: "#2563eb",
-  color: "#fff",
-  padding: "14px 34px",
+const heroBtns = {
+  marginTop: "40px",
+  display: "flex",
+  justifyContent: "center",
+  gap: "20px",
+  flexWrap: "wrap"
+};
+
+const btnPrimary = {
+  background: "#22c55e",
+  color: "#ffffff",
+  padding: "14px 30px",
+  borderRadius: "8px",
+  textDecoration: "none",
+  fontWeight: "bold"
+};
+
+const btnSecondary = {
+  background: "#ffffff",
+  color: "#1e40af",
+  padding: "14px 30px",
   borderRadius: "8px",
   textDecoration: "none",
   fontWeight: "bold"
@@ -135,9 +156,9 @@ const section = {
 };
 
 const h2 = {
-  textAlign: "center",
   fontSize: "32px",
-  marginBottom: "50px"
+  marginBottom: "40px",
+  textAlign: "center"
 };
 
 const grid = {
@@ -147,41 +168,40 @@ const grid = {
 };
 
 const card = {
-  background: "#ffffff",
+  background: "#f8fafc",
   padding: "30px",
-  borderRadius: "14px",
-  boxShadow: "0 10px 25px rgba(0,0,0,0.05)",
-  textAlign: "center"
+  borderRadius: "12px",
+  textAlign: "center",
+  boxShadow: "0 8px 20px rgba(0,0,0,0.05)"
 };
 
-const cardTitle = {
-  fontSize: "20px",
-  marginBottom: "10px"
-};
-
-const cardDesc = {
-  fontSize: "15px",
+const cardText = {
   color: "#475569",
-  marginBottom: "20px"
+  margin: "15px 0"
 };
 
-const price = {
-  fontSize: "20px",
-  fontWeight: "bold",
-  marginBottom: "20px"
-};
-
-const buy = {
+const cardBtn = {
   display: "inline-block",
-  background: "#22c55e",
-  color: "#fff",
+  background: "#2563eb",
+  color: "#ffffff",
   padding: "10px 22px",
   borderRadius: "6px",
   textDecoration: "none"
 };
 
+const seo = {
+  background: "#f1f5f9",
+  padding: "80px 20px"
+};
+
+const p = {
+  maxWidth: "900px",
+  margin: "0 auto 20px",
+  fontSize: "16px",
+  color: "#475569"
+};
+
 const why = {
-  background: "#ffffff",
   padding: "80px 20px"
 };
 
@@ -194,15 +214,15 @@ const whyGrid = {
 };
 
 const whyCard = {
-  background: "#f1f5f9",
+  background: "#e2e8f0",
   padding: "20px",
   borderRadius: "10px",
   textAlign: "center"
 };
 
 const cta = {
-  background: "#2563eb",
-  color: "#fff",
+  background: "#1e40af",
+  color: "#ffffff",
   padding: "90px 20px",
   textAlign: "center"
 };
@@ -214,9 +234,9 @@ const ctaTitle = {
 
 const ctaBtn = {
   background: "#22c55e",
-  padding: "14px 34px",
+  padding: "14px 36px",
   borderRadius: "8px",
-  color: "#fff",
+  color: "#ffffff",
   textDecoration: "none",
   fontWeight: "bold"
 };
