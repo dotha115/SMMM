@@ -4,7 +4,7 @@ export default function Home() {
     <main style={page}>
 
       {/* HERO */}
-      <section style={hero}>
+      <section style={{ ...hero, ...fadeUp }}>
         <h1 style={heroTitle}>
           Explota tu crecimiento en redes sociales
         </h1>
@@ -247,3 +247,37 @@ const footerLinks = {
   justifyContent: "center",
   gap: "20px"
 };
+
+const fadeUp = {
+  animation: "fadeUp 0.8s ease forwards"
+};
+
+const hoverCard = {
+  transition: "all 0.3s ease",
+  cursor: "pointer"
+};
+
+const hoverCardActive = {
+  transform: "translateY(-8px)",
+  boxShadow: "0 20px 40px rgba(0,0,0,0.15)"
+};
+
+const hoverBtn = {
+  transition: "all 0.25s ease"
+};
+if (typeof document !== "undefined") {
+  const style = document.createElement("style");
+  style.innerHTML = `
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  `;
+  document.head.appendChild(style);
+}
