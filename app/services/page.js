@@ -84,7 +84,7 @@ function ServiceBlock({ title, services, color, bg }) {
         {services.map((s) => (
           <div key={s} style={{ ...card, borderColor: color }}>
             <div style={{ ...icon, background: color }}>
-              {title[0]}
+              {title.includes("Twitch") ? "T" : "K"}
             </div>
             <h3 style={cardTitle}>{s}</h3>
             <p style={cardText}>
