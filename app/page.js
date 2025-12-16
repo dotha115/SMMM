@@ -1,334 +1,246 @@
 "use client";
+
+import { useState } from "react";
+
 export default function HomePage() {
+  const [cartOpen, setCartOpen] = useState(false);
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (item) => {
+    setCart([...cart, item]);
+    setCartOpen(true);
+  };
+
   return (
-    <div>
+    <div style={app}>
+      {/* TOP BAR */}
+      <header style={topbar}>
+        <div style={logo}>SMM</div>
+
+        <nav style={nav}>
+          <NavBtn text="Instagram" />
+          <NavBtn text="TikTok" />
+          <NavBtn text="YouTube" />
+          <NavBtn text="Streaming" />
+        </nav>
+
+        <div style={cartIcon} onClick={() => setCartOpen(!cartOpen)}>
+          🛒 <span style={cartCount}>{cart.length}</span>
+        </div>
+      </header>
+
+      {/* CART */}
+      {cartOpen && (
+        <div style={cartPanel}>
+          <h3>Carrito</h3>
+          {cart.length === 0 && <p>Carrito vacío</p>}
+          {cart.map((c, i) => (
+            <div key={i} style={cartItem}>
+              {c}
+            </div>
+          ))}
+          {cart.length > 0 && (
+            <button style={checkoutBtn}>Finalizar compra</button>
+          )}
+        </div>
+      )}
+
       {/* HERO */}
       <section style={hero}>
-        <span style={badge}>🚀 #1 Social Media Growth Service</span>
-
-        <h1 style={heroTitle}>Explota tu Crecimiento en Redes</h1>
-
+        <span style={badge}>🚀 Social Media Growth</span>
+        <h1 style={heroTitle}>Haz crecer tus redes como un profesional</h1>
         <p style={heroText}>
-          Seguidores premium, likes y vistas para Instagram, TikTok, YouTube y
-          Twitch/Kick. Entrega instantánea, interacción real.
+          Seguidores, likes y visualizaciones premium para Instagram, TikTok,
+          YouTube y Streaming. Entrega rápida. Sin registro.
         </p>
-
-        <a href="/services" style={heroBtn}>Empezar Ahora</a>
-
-        <div style={stats}>
-          <Stat value="50K+" label="Pedidos Completados" />
-          <Stat value="4.9/5" label="Valoración Clientes" />
-          <Stat value="24/7" label="Soporte Activo" />
-        </div>
       </section>
 
       {/* SERVICES */}
       <section style={section}>
-        <h2 style={sectionTitle}>Nuestros Servicios</h2>
-
         <div style={grid}>
-          <ServiceCard title="Instagram" desc="Seguidores y likes reales" color="#E1306C" bg="#fde4ef" />
-          <ServiceCard title="TikTok" desc="Likes, seguidores y vistas" color="#000" bg="#eee" />
-          <ServiceCard title="YouTube" desc="Visualizaciones y suscriptores" color="#FF0000" bg="#ffe5e5" />
-          <ServiceCard title="Twitch / Kick" desc="Seguidores en directo" color="#00C853" bg="#e6f7ee" />
+          <Service
+            title="Instagram Seguidores"
+            price="9,99€"
+            add={() => addToCart("Instagram Seguidores")}
+          />
+          <Service
+            title="TikTok Likes"
+            price="7,99€"
+            add={() => addToCart("TikTok Likes")}
+          />
+          <Service
+            title="YouTube Vistas"
+            price="12,99€"
+            add={() => addToCart("YouTube Vistas")}
+          />
+          <Service
+            title="Twitch / Kick Seguidores"
+            price="8,99€"
+            add={() => addToCart("Streaming Seguidores")}
+          />
         </div>
       </section>
-
-      {/* HOW IT WORKS */}
-      <section style={sectionAlt}>
-        <h2 style={sectionTitle}>Cómo Funciona</h2>
-
-        <div style={grid}>
-          <Step number="1" title="Elige Paquete" text="Selecciona el servicio y cantidad que necesitas." />
-          <Step number="2" title="Introduce Detalles" text="Proporciona tu usuario o enlace. No se requiere contraseña." />
-          <Step number="3" title="Mira Creciendo" text="Relájate y observa cómo explota tu presencia en redes." />
-        </div>
-      </section>
-
-      {/* WHY US */}
-      <section style={section}>
-        <h2 style={sectionTitle}>Por Qué Elegirnos</h2>
-
-        <div style={grid}>
-          <Feature title="100% Seguro" text="Nunca pedimos tu contraseña. Tu cuenta está protegida." />
-          <Feature title="Entrega Rápida" text="Los pedidos comienzan minutos tras la confirmación." />
-          <Feature title="Alta Calidad" text="Perfiles premium para crecimiento auténtico." />
-        </div>
-      </section>
-
-      {/* FOOTER */}
-      <footer style={footer}>
-        <div style={footerLogo}>S</div>
-        <p>© 2024 Social Boost Pro. Todos los derechos reservados.</p>
-        <div style={footerLinks}>
-          <a href="#">Términos de Servicio</a>
-          <a href="#">Política de Privacidad</a>
-        </div>
-      </footer>
     </div>
   );
 }
 
 /* COMPONENTS */
 
-function Stat({ value, label }) {
-  return (
-    <div style={statCard}>
-      <strong style={statValue}>{value}</strong>
-      <span style={statLabel}>{label}</span>
-    </div>
-  );
+function NavBtn({ text }) {
+  return <button style={navBtn}>{text}</button>;
 }
 
-function ServiceCard({ title, desc, color, bg }) {
+function Service({ title, price, add }) {
   return (
     <div
-      style={{ ...serviceCard, background: bg, borderColor: color }}
+      style={serviceCard}
       onMouseEnter={(e) =>
-        Object.assign(e.currentTarget.style, {
-          transform: "translateY(-10px)",
-          boxShadow: "0 25px 50px rgba(0,0,0,0.18)"
-        })
+        (e.currentTarget.style.transform = "translateY(-8px)")
       }
       onMouseLeave={(e) =>
-        Object.assign(e.currentTarget.style, {
-          transform: "none",
-          boxShadow: serviceCard.boxShadow
-        })
+        (e.currentTarget.style.transform = "none")
       }
     >
-      <div style={{ ...icon, background: color }}>{title[0]}</div>
-      <h3 style={{ ...cardTitle, color }}>{title}</h3>
-      <p style={cardText}>{desc}</p>
-      <a href="/services" style={{ ...cardBtn, background: color }}>
-        Ver servicios
-      </a>
-    </div>
-  );
-}
-
-function Step({ number, title, text }) {
-  return (
-    <div
-      style={stepCard}
-      onMouseEnter={(e) =>
-        Object.assign(e.currentTarget.style, {
-          transform: "translateY(-8px)",
-          boxShadow: "0 20px 40px rgba(0,0,0,0.15)"
-        })
-      }
-      onMouseLeave={(e) =>
-        Object.assign(e.currentTarget.style, {
-          transform: "none",
-          boxShadow: stepCard.boxShadow
-        })
-      }
-    >
-      <div style={stepNum}>{number}</div>
-      <h3 style={cardTitle}>{title}</h3>
-      <p style={cardText}>{text}</p>
-    </div>
-  );
-}
-
-function Feature({ title, text }) {
-  return (
-    <div style={featureCard}>
-      <h3 style={cardTitle}>{title}</h3>
-      <p style={cardText}>{text}</p>
+      <h3>{title}</h3>
+      <p style={price}>{price}</p>
+      <button style={addBtn} onClick={add}>
+        Añadir al carrito
+      </button>
     </div>
   );
 }
 
 /* STYLES */
 
-const hero = {
-  padding: "120px 20px",
-  background: "linear-gradient(135deg, #111, #333)",
+const app = {
+  background: "#0b0b0f",
   color: "#fff",
+  minHeight: "100vh"
+};
+
+const topbar = {
+  position: "fixed",
+  top: 0,
+  width: "100%",
+  background: "#0f0f17",
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  padding: "15px 30px",
+  zIndex: 100
+};
+
+const logo = {
+  fontWeight: "800",
+  fontSize: "20px",
+  color: "#b44cff"
+};
+
+const nav = {
+  display: "flex",
+  gap: "20px"
+};
+
+const navBtn = {
+  background: "none",
+  border: "none",
+  color: "#fff",
+  cursor: "pointer",
+  fontSize: "14px"
+};
+
+const cartIcon = {
+  cursor: "pointer",
+  fontSize: "18px"
+};
+
+const cartCount = {
+  marginLeft: "6px",
+  color: "#ff4ecd",
+  fontWeight: "700"
+};
+
+const cartPanel = {
+  position: "fixed",
+  right: 20,
+  top: 80,
+  background: "#15151d",
+  padding: "20px",
+  borderRadius: "14px",
+  width: "260px",
+  boxShadow: "0 20px 50px rgba(0,0,0,.5)",
+  zIndex: 200
+};
+
+const cartItem = {
+  fontSize: "14px",
+  marginBottom: "8px"
+};
+
+const checkoutBtn = {
+  width: "100%",
+  padding: "12px",
+  background: "#b44cff",
+  border: "none",
+  borderRadius: "8px",
+  color: "#fff",
+  marginTop: "10px",
+  cursor: "pointer"
+};
+
+const hero = {
+  padding: "160px 20px 80px",
   textAlign: "center"
 };
 
 const badge = {
-  background: "#00C853",
-  color: "#fff",
-  padding: "8px 16px",
-  borderRadius: "20px",
-  fontSize: "13px",
-  fontWeight: "600",
-  display: "inline-block",
-  marginBottom: "20px"
+  color: "#ff4ecd",
+  fontSize: "14px"
 };
 
 const heroTitle = {
-  fontSize: "46px",
+  fontSize: "44px",
   fontWeight: "800",
-  maxWidth: "800px",
-  margin: "0 auto 20px"
+  margin: "20px 0"
 };
 
 const heroText = {
-  fontSize: "18px",
-  maxWidth: "650px",
-  margin: "0 auto 40px",
-  opacity: 0.9
-};
-
-const heroBtn = {
-  background: "#00C853",
-  color: "#fff",
-  padding: "16px 30px",
-  borderRadius: "12px",
-  fontSize: "16px",
-  fontWeight: "600",
-  textDecoration: "none"
-};
-
-const stats = {
-  display: "flex",
-  gap: "30px",
-  justifyContent: "center",
-  marginTop: "50px",
-  flexWrap: "wrap"
-};
-
-const statCard = {
-  textAlign: "center"
-};
-
-const statValue = {
-  fontSize: "32px",
-  fontWeight: "800",
-  display: "block"
-};
-
-const statLabel = {
-  fontSize: "14px",
-  opacity: 0.8
+  maxWidth: "600px",
+  margin: "0 auto",
+  opacity: 0.85
 };
 
 const section = {
-  padding: "90px 20px",
+  padding: "60px 20px",
   maxWidth: "1200px",
   margin: "0 auto"
 };
 
-const sectionAlt = {
-  ...section,
-  background: "#f9f9f9"
-};
-
-const sectionTitle = {
-  fontSize: "36px",
-  fontWeight: "800",
-  textAlign: "center",
-  marginBottom: "60px"
-};
-
 const grid = {
   display: "grid",
-  gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-  gap: "30px"
+  gridTemplateColumns: "repeat(auto-fit, minmax(250px,1fr))",
+  gap: "25px"
 };
 
 const serviceCard = {
-  padding: "35px 25px",
+  background: "#15151d",
+  padding: "30px",
   borderRadius: "18px",
-  border: "2px solid",
-  textAlign: "center",
-  boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
-  transition: "all 0.35s ease",
-  cursor: "pointer"
+  transition: "all .3s ease",
+  textAlign: "center"
 };
 
-const icon = {
-  width: "60px",
-  height: "60px",
-  borderRadius: "50%",
-  color: "#fff",
-  fontSize: "26px",
+const price = {
+  fontSize: "22px",
   fontWeight: "700",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  margin: "0 auto 20px"
+  margin: "10px 0"
 };
 
-const cardTitle = {
-  fontSize: "20px",
-  fontWeight: "700",
-  marginBottom: "10px"
-};
-
-const cardText = {
-  fontSize: "15px",
-  color: "#555",
-  marginBottom: "25px"
-};
-
-const cardBtn = {
-  padding: "12px 22px",
+const addBtn = {
+  background: "#ff4ecd",
+  border: "none",
+  padding: "12px 20px",
   borderRadius: "10px",
   color: "#fff",
-  textDecoration: "none",
-  fontSize: "14px",
-  fontWeight: "600"
-};
-
-const stepCard = {
-  background: "#fff",
-  padding: "35px 25px",
-  borderRadius: "18px",
-  boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
-  transition: "all 0.35s ease",
-  textAlign: "center"
-};
-
-const stepNum = {
-  width: "50px",
-  height: "50px",
-  borderRadius: "50%",
-  background: "#00C853",
-  color: "#fff",
-  fontSize: "22px",
-  fontWeight: "700",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  margin: "0 auto 20px"
-};
-
-const featureCard = {
-  background: "#fff",
-  padding: "35px 25px",
-  borderRadius: "18px",
-  boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
-  textAlign: "center"
-};
-
-const footer = {
-  padding: "60px 20px",
-  background: "#111",
-  color: "#fff",
-  textAlign: "center"
-};
-
-const footerLogo = {
-  width: "50px",
-  height: "50px",
-  borderRadius: "50%",
-  background: "#00C853",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  fontSize: "22px",
-  fontWeight: "800",
-  margin: "0 auto 15px"
-};
-
-const footerLinks = {
-  display: "flex",
-  justifyContent: "center",
-  gap: "20px",
-  marginTop: "15px"
+  cursor: "pointer"
 };
