@@ -4,12 +4,22 @@ export default function HomePage() {
     <div>
       {/* HERO */}
       <section style={hero}>
-        <h1 style={heroTitle}>Explota tu Crecimiento en Redes Sociales</h1>
+        <span style={badge}>🚀 #1 Social Media Growth Service</span>
+
+        <h1 style={heroTitle}>Explota tu Crecimiento en Redes</h1>
+
         <p style={heroText}>
-          Seguidores, likes y visualizaciones premium para Instagram, TikTok,
-          YouTube, Twitch y Kick. Entrega instantánea. Sin registro.
+          Seguidores premium, likes y vistas para Instagram, TikTok, YouTube y
+          Twitch/Kick. Entrega instantánea, interacción real.
         </p>
-        <a href="/services" style={heroBtn}>Empezar ahora</a>
+
+        <a href="/services" style={heroBtn}>Empezar Ahora</a>
+
+        <div style={stats}>
+          <Stat value="50K+" label="Pedidos Completados" />
+          <Stat value="4.9/5" label="Valoración Clientes" />
+          <Stat value="24/7" label="Soporte Activo" />
+        </div>
       </section>
 
       {/* SERVICES */}
@@ -17,30 +27,10 @@ export default function HomePage() {
         <h2 style={sectionTitle}>Nuestros Servicios</h2>
 
         <div style={grid}>
-          <ServiceCard
-            title="Instagram"
-            desc="Seguidores y likes reales"
-            color="#E1306C"
-            bg="#fde4ef"
-          />
-          <ServiceCard
-            title="TikTok"
-            desc="Likes, seguidores y vistas"
-            color="#000000"
-            bg="#eeeeee"
-          />
-          <ServiceCard
-            title="YouTube"
-            desc="Visualizaciones y suscriptores"
-            color="#FF0000"
-            bg="#ffe5e5"
-          />
-          <ServiceCard
-            title="Twitch / Kick"
-            desc="Seguidores en directo"
-            color="#00C853"
-            bg="#e6f7ee"
-          />
+          <ServiceCard title="Instagram" desc="Seguidores y likes reales" color="#E1306C" bg="#fde4ef" />
+          <ServiceCard title="TikTok" desc="Likes, seguidores y vistas" color="#000" bg="#eee" />
+          <ServiceCard title="YouTube" desc="Visualizaciones y suscriptores" color="#FF0000" bg="#ffe5e5" />
+          <ServiceCard title="Twitch / Kick" desc="Seguidores en directo" color="#00C853" bg="#e6f7ee" />
         </div>
       </section>
 
@@ -49,37 +39,51 @@ export default function HomePage() {
         <h2 style={sectionTitle}>Cómo Funciona</h2>
 
         <div style={grid}>
-          <Step
-            number="1"
-            title="Elige Paquete"
-            text="Selecciona el servicio y cantidad que necesitas."
-          />
-          <Step
-            number="2"
-            title="Introduce Detalles"
-            text="Solo tu usuario o enlace. Nunca pedimos contraseña."
-          />
-          <Step
-            number="3"
-            title="Mira Creciendo"
-            text="Tu pedido empieza en minutos."
-          />
+          <Step number="1" title="Elige Paquete" text="Selecciona el servicio y cantidad que necesitas." />
+          <Step number="2" title="Introduce Detalles" text="Proporciona tu usuario o enlace. No se requiere contraseña." />
+          <Step number="3" title="Mira Creciendo" text="Relájate y observa cómo explota tu presencia en redes." />
         </div>
       </section>
+
+      {/* WHY US */}
+      <section style={section}>
+        <h2 style={sectionTitle}>Por Qué Elegirnos</h2>
+
+        <div style={grid}>
+          <Feature title="100% Seguro" text="Nunca pedimos tu contraseña. Tu cuenta está protegida." />
+          <Feature title="Entrega Rápida" text="Los pedidos comienzan minutos tras la confirmación." />
+          <Feature title="Alta Calidad" text="Perfiles premium para crecimiento auténtico." />
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer style={footer}>
+        <div style={footerLogo}>S</div>
+        <p>© 2024 Social Boost Pro. Todos los derechos reservados.</p>
+        <div style={footerLinks}>
+          <a href="#">Términos de Servicio</a>
+          <a href="#">Política de Privacidad</a>
+        </div>
+      </footer>
     </div>
   );
 }
 
 /* COMPONENTS */
 
+function Stat({ value, label }) {
+  return (
+    <div style={statCard}>
+      <strong style={statValue}>{value}</strong>
+      <span style={statLabel}>{label}</span>
+    </div>
+  );
+}
+
 function ServiceCard({ title, desc, color, bg }) {
   return (
     <div
-      style={{
-        ...serviceCard,
-        background: bg,
-        borderColor: color
-      }}
+      style={{ ...serviceCard, background: bg, borderColor: color }}
       onMouseEnter={(e) =>
         Object.assign(e.currentTarget.style, {
           transform: "translateY(-10px)",
@@ -127,6 +131,15 @@ function Step({ number, title, text }) {
   );
 }
 
+function Feature({ title, text }) {
+  return (
+    <div style={featureCard}>
+      <h3 style={cardTitle}>{title}</h3>
+      <p style={cardText}>{text}</p>
+    </div>
+  );
+}
+
 /* STYLES */
 
 const hero = {
@@ -134,6 +147,17 @@ const hero = {
   background: "linear-gradient(135deg, #111, #333)",
   color: "#fff",
   textAlign: "center"
+};
+
+const badge = {
+  background: "#00C853",
+  color: "#fff",
+  padding: "8px 16px",
+  borderRadius: "20px",
+  fontSize: "13px",
+  fontWeight: "600",
+  display: "inline-block",
+  marginBottom: "20px"
 };
 
 const heroTitle = {
@@ -158,6 +182,29 @@ const heroBtn = {
   fontSize: "16px",
   fontWeight: "600",
   textDecoration: "none"
+};
+
+const stats = {
+  display: "flex",
+  gap: "30px",
+  justifyContent: "center",
+  marginTop: "50px",
+  flexWrap: "wrap"
+};
+
+const statCard = {
+  textAlign: "center"
+};
+
+const statValue = {
+  fontSize: "32px",
+  fontWeight: "800",
+  display: "block"
+};
+
+const statLabel = {
+  fontSize: "14px",
+  opacity: 0.8
 };
 
 const section = {
@@ -249,4 +296,39 @@ const stepNum = {
   alignItems: "center",
   justifyContent: "center",
   margin: "0 auto 20px"
+};
+
+const featureCard = {
+  background: "#fff",
+  padding: "35px 25px",
+  borderRadius: "18px",
+  boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
+  textAlign: "center"
+};
+
+const footer = {
+  padding: "60px 20px",
+  background: "#111",
+  color: "#fff",
+  textAlign: "center"
+};
+
+const footerLogo = {
+  width: "50px",
+  height: "50px",
+  borderRadius: "50%",
+  background: "#00C853",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  fontSize: "22px",
+  fontWeight: "800",
+  margin: "0 auto 15px"
+};
+
+const footerLinks = {
+  display: "flex",
+  justifyContent: "center",
+  gap: "20px",
+  marginTop: "15px"
 };
