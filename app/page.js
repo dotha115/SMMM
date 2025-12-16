@@ -1,91 +1,112 @@
 "use client";
-export default function Home() {
+export default function HomePage() {
   return (
-    <main style={page}>
-
+    <div>
       {/* HERO */}
-      <section style={{ ...hero, ...fadeUp }}>
-        <h1 style={heroTitle}>
-          Explota tu crecimiento en redes sociales
-        </h1>
+      <section style={hero}>
+        <h1 style={heroTitle}>Explota tu Crecimiento en Redes Sociales</h1>
         <p style={heroText}>
-          Seguidores premium, likes y vistas para Instagram, TikTok,
-          YouTube y Twitch/Kick. Entrega instantánea, interacción real.
+          Seguidores, likes y visualizaciones premium para Instagram, TikTok,
+          YouTube, Twitch y Kick. Entrega instantánea. Sin registro.
         </p>
         <a href="/services" style={heroBtn}>Empezar ahora</a>
       </section>
 
-      {/* HOW IT WORKS */}
+      {/* SERVICES */}
       <section style={section}>
-        <h2 style={h2}>Cómo funciona</h2>
+        <h2 style={sectionTitle}>Nuestros Servicios</h2>
+
+        <div style={grid}>
+          <ServiceCard
+            title="Instagram"
+            desc="Seguidores y likes reales"
+            color="#E1306C"
+            bg="#fde4ef"
+          />
+          <ServiceCard
+            title="TikTok"
+            desc="Likes, seguidores y vistas"
+            color="#000000"
+            bg="#eeeeee"
+          />
+          <ServiceCard
+            title="YouTube"
+            desc="Visualizaciones y suscriptores"
+            color="#FF0000"
+            bg="#ffe5e5"
+          />
+          <ServiceCard
+            title="Twitch / Kick"
+            desc="Seguidores en directo"
+            color="#00C853"
+            bg="#e6f7ee"
+          />
+        </div>
+      </section>
+
+      {/* HOW IT WORKS */}
+      <section style={sectionAlt}>
+        <h2 style={sectionTitle}>Cómo Funciona</h2>
 
         <div style={grid}>
           <Step
             number="1"
-            title="Elige paquete"
-            text="Selecciona el servicio y la cantidad que necesitas."
+            title="Elige Paquete"
+            text="Selecciona el servicio y cantidad que necesitas."
           />
           <Step
             number="2"
-            title="Introduce detalles"
-            text="Proporciona tu usuario o enlace. Nunca pedimos contraseña."
+            title="Introduce Detalles"
+            text="Solo tu usuario o enlace. Nunca pedimos contraseña."
           />
           <Step
             number="3"
-            title="Mira creciendo"
-            text="Relájate y observa cómo explota tu presencia en redes."
+            title="Mira Creciendo"
+            text="Tu pedido empieza en minutos."
           />
         </div>
       </section>
-
-      {/* WHY US */}
-      <section style={darkSection}>
-        <h2 style={{ ...h2, color: "#fff" }}>Por qué elegirnos</h2>
-
-        <div style={grid}>
-          <Feature
-            title="100% Seguro"
-            text="Nunca pedimos tu contraseña. Tu cuenta está protegida."
-          />
-          <Feature
-            title="Entrega rápida"
-            text="Los pedidos comienzan minutos tras la confirmación."
-          />
-          <Feature
-            title="Alta calidad"
-            text="Perfiles premium para un crecimiento auténtico."
-          />
-        </div>
-      </section>
-
-      {/* FINAL CTA */}
-      <section style={cta}>
-        <h2 style={ctaTitle}>Empieza hoy mismo</h2>
-        <p style={ctaText}>
-          Sin registro. Sin riesgos. Resultados visibles.
-        </p>
-        <a href="/services" style={ctaBtn}>Comprar seguidores</a>
-      </section>
-
-      {/* FOOTER */}
-      <footer style={footer}>
-        <p>© 2024 Social Boost Pro. Todos los derechos reservados.</p>
-        <div style={footerLinks}>
-          <a href="/terms">Términos de servicio</a>
-          <a href="/privacy">Política de privacidad</a>
-        </div>
-      </footer>
-
-    </main>
+    </div>
   );
 }
 
-/* COMPONENTES */
+/* COMPONENTS */
+
+function ServiceCard({ title, desc, color, bg }) {
+  return (
+    <div
+      style={{
+        ...serviceCard,
+        background: bg,
+        borderColor: color
+      }}
+      onMouseEnter={(e) =>
+        Object.assign(e.currentTarget.style, {
+          transform: "translateY(-10px)",
+          boxShadow: "0 25px 50px rgba(0,0,0,0.18)"
+        })
+      }
+      onMouseLeave={(e) =>
+        Object.assign(e.currentTarget.style, {
+          transform: "none",
+          boxShadow: serviceCard.boxShadow
+        })
+      }
+    >
+      <div style={{ ...icon, background: color }}>{title[0]}</div>
+      <h3 style={{ ...cardTitle, color }}>{title}</h3>
+      <p style={cardText}>{desc}</p>
+      <a href="/services" style={{ ...cardBtn, background: color }}>
+        Ver servicios
+      </a>
+    </div>
+  );
+}
 
 function Step({ number, title, text }) {
   return (
     <div
-      style={card}
+      style={stepCard}
       onMouseEnter={(e) =>
         Object.assign(e.currentTarget.style, {
           transform: "translateY(-8px)",
@@ -95,7 +116,7 @@ function Step({ number, title, text }) {
       onMouseLeave={(e) =>
         Object.assign(e.currentTarget.style, {
           transform: "none",
-          boxShadow: "0 10px 30px rgba(0,0,0,0.08)"
+          boxShadow: stepCard.boxShadow
         })
       }
     >
@@ -106,192 +127,126 @@ function Step({ number, title, text }) {
   );
 }
 
-function Feature({ title, text }) {
-  return (
-    <div style={feature}>
-      <h3 style={featureTitle}>{title}</h3>
-      <p style={featureText}>{text}</p>
-    </div>
-  );
-}
-
-/* ESTILOS */
-
-const page = {
-  fontFamily: "Arial",
-  color: "#1e293b",
-  background: "#ffffff"
-};
+/* STYLES */
 
 const hero = {
-  background: "linear-gradient(135deg,#0f172a,#020617)",
-  color: "#ffffff",
   padding: "120px 20px",
+  background: "linear-gradient(135deg, #111, #333)",
+  color: "#fff",
   textAlign: "center"
 };
 
 const heroTitle = {
-  fontSize: "48px",
-  maxWidth: "900px",
+  fontSize: "46px",
+  fontWeight: "800",
+  maxWidth: "800px",
   margin: "0 auto 20px"
 };
 
 const heroText = {
   fontSize: "18px",
-  maxWidth: "750px",
-  margin: "0 auto 35px",
+  maxWidth: "650px",
+  margin: "0 auto 40px",
   opacity: 0.9
 };
 
 const heroBtn = {
-  background: "#22c55e",
-  padding: "16px 40px",
-  borderRadius: "10px",
-  color: "#ffffff",
-  fontWeight: "bold",
+  background: "#00C853",
+  color: "#fff",
+  padding: "16px 30px",
+  borderRadius: "12px",
+  fontSize: "16px",
+  fontWeight: "600",
   textDecoration: "none"
 };
 
 const section = {
   padding: "90px 20px",
-  textAlign: "center"
+  maxWidth: "1200px",
+  margin: "0 auto"
 };
 
-const darkSection = {
-  padding: "90px 20px",
-  background: "#020617",
-  textAlign: "center"
+const sectionAlt = {
+  ...section,
+  background: "#f9f9f9"
 };
 
-const h2 = {
+const sectionTitle = {
   fontSize: "36px",
-  marginBottom: "50px"
+  fontWeight: "800",
+  textAlign: "center",
+  marginBottom: "60px"
 };
 
 const grid = {
-  maxWidth: "1100px",
-  margin: "0 auto",
   display: "grid",
-  gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))",
+  gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
   gap: "30px"
 };
 
-const card = {
-  background: "#ffffff",
-  padding: "35px",
-  borderRadius: "16px",
-  boxShadow: "0 10px 30px rgba(0,0,0,0.08)"
+const serviceCard = {
+  padding: "35px 25px",
+  borderRadius: "18px",
+  border: "2px solid",
+  textAlign: "center",
+  boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
+  transition: "all 0.35s ease",
+  cursor: "pointer"
 };
 
-const stepNum = {
-  width: "42px",
-  height: "42px",
+const icon = {
+  width: "60px",
+  height: "60px",
   borderRadius: "50%",
-  background: "#22c55e",
-  color: "#ffffff",
+  color: "#fff",
+  fontSize: "26px",
+  fontWeight: "700",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  margin: "0 auto 15px",
-  fontWeight: "bold"
+  margin: "0 auto 20px"
 };
 
 const cardTitle = {
-  fontSize: "18px",
+  fontSize: "20px",
+  fontWeight: "700",
   marginBottom: "10px"
 };
 
 const cardText = {
-  fontSize: "14px",
-  color: "#475569"
+  fontSize: "15px",
+  color: "#555",
+  marginBottom: "25px"
 };
 
-const feature = {
-  background: "#020617",
-  border: "1px solid #1e293b",
-  borderRadius: "16px",
-  padding: "35px"
-};
-
-const featureTitle = {
-  color: "#22c55e",
-  fontSize: "20px",
-  marginBottom: "10px"
-};
-
-const featureText = {
-  color: "#cbd5f5",
-  fontSize: "14px"
-};
-
-const cta = {
-  padding: "100px 20px",
-  textAlign: "center"
-};
-
-const ctaTitle = {
-  fontSize: "36px",
-  marginBottom: "15px"
-};
-
-const ctaText = {
-  marginBottom: "30px",
-  color: "#475569"
-};
-
-const ctaBtn = {
-  background: "#22c55e",
-  padding: "16px 40px",
+const cardBtn = {
+  padding: "12px 22px",
   borderRadius: "10px",
-  color: "#ffffff",
-  fontWeight: "bold",
-  textDecoration: "none"
+  color: "#fff",
+  textDecoration: "none",
+  fontSize: "14px",
+  fontWeight: "600"
 };
 
-const footer = {
-  background: "#020617",
-  color: "#94a3b8",
-  padding: "40px 20px",
+const stepCard = {
+  background: "#fff",
+  padding: "35px 25px",
+  borderRadius: "18px",
+  boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
+  transition: "all 0.35s ease",
   textAlign: "center"
 };
 
-const footerLinks = {
-  marginTop: "10px",
+const stepNum = {
+  width: "50px",
+  height: "50px",
+  borderRadius: "50%",
+  background: "#00C853",
+  color: "#fff",
+  fontSize: "22px",
+  fontWeight: "700",
   display: "flex",
+  alignItems: "center",
   justifyContent: "center",
-  gap: "20px"
+  margin: "0 auto 20px"
 };
-
-const fadeUp = {
-  animation: "fadeUp 0.8s ease forwards"
-};
-
-const hoverCard = {
-  transition: "all 0.3s ease",
-  cursor: "pointer"
-};
-
-const hoverCardActive = {
-  transform: "translateY(-8px)",
-  boxShadow: "0 20px 40px rgba(0,0,0,0.15)"
-};
-
-const hoverBtn = {
-  transition: "all 0.25s ease"
-};
-if (typeof document !== "undefined") {
-  const style = document.createElement("style");
-  style.innerHTML = `
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  `;
-  document.head.appendChild(style);
-}
