@@ -1,134 +1,140 @@
 "use client";
+
 export const dynamic = "force-dynamic";
+
+import Link from "next/link";
+
+const services = [
+  {
+    category: "Instagram",
+    color: "#E1306C",
+    items: [
+      { name: "Seguidores Instagram", price: "Desde 3€" },
+      { name: "Likes Instagram", price: "Desde 2€" },
+      { name: "Vistas Instagram", price: "Desde 1€" }
+    ]
+  },
+  {
+    category: "TikTok",
+    color: "#000000",
+    items: [
+      { name: "Seguidores TikTok", price: "Desde 3€" },
+      { name: "Likes TikTok", price: "Desde 2€" },
+      { name: "Vistas TikTok", price: "Desde 1€" }
+    ]
+  },
+  {
+    category: "YouTube",
+    color: "#FF0000",
+    items: [
+      { name: "Suscriptores YouTube", price: "Desde 5€" },
+      { name: "Likes YouTube", price: "Desde 3€" },
+      { name: "Vistas YouTube", price: "Desde 2€" }
+    ]
+  },
+  {
+    category: "Twitch / Kick",
+    color: "#00E701",
+    items: [
+      { name: "Seguidores Twitch", price: "Desde 4€" },
+      { name: "Seguidores Kick", price: "Desde 4€" },
+      { name: "Espectadores en Directo", price: "Desde 10€" }
+    ]
+  }
+];
+
 export default function ServicesPage() {
   return (
-    <div style={page}>
-      <h1 style={title}>Servicios SMM</h1>
-      <p style={subtitle}>
-        Compra seguidores, likes y visualizaciones en segundos. Sin registro.
+    <main style={styles.container}>
+      <h1 style={styles.title}>Servicios Disponibles</h1>
+      <p style={styles.subtitle}>
+        Selecciona un servicio y comienza a crecer hoy mismo
       </p>
 
-      <div style={grid}>
-        <PriceCard
-          service="Instagram Seguidores"
-          qty="1.000"
-          price="9,99€"
-          color="#E1306C"
-        />
-        <PriceCard
-          service="TikTok Likes"
-          qty="5.000"
-          price="7,99€"
-          color="#000000"
-        />
-        <PriceCard
-          service="YouTube Visualizaciones"
-          qty="10.000"
-          price="12,99€"
-          color="#FF0000"
-        />
-        <PriceCard
-          service="Twitch / Kick Seguidores"
-          qty="1.000"
-          price="8,99€"
-          color="#00C853"
-        />
+      <div style={styles.grid}>
+        {services.map((service, i) => (
+          <div
+            key={i}
+            style={{
+              ...styles.card,
+              borderTop: `6px solid ${service.color}`
+            }}
+          >
+            <h2 style={{ ...styles.cardTitle, color: service.color }}>
+              {service.category}
+            </h2>
+
+            {service.items.map((item, j) => (
+              <div key={j} style={styles.item}>
+                <span>{item.name}</span>
+                <span style={styles.price}>{item.price}</span>
+              </div>
+            ))}
+
+            <Link href="/" style={styles.button}>
+              Comprar Ahora
+            </Link>
+          </div>
+        ))}
       </div>
-    </div>
+    </main>
   );
 }
 
-function PriceCard({ service, qty, price, color }) {
-  return (
-    <div
-      style={{ ...card, borderTop: `5px solid ${color}` }}
-      onMouseEnter={(e) =>
-        Object.assign(e.currentTarget.style, {
-          transform: "translateY(-8px)",
-          boxShadow: "0 25px 50px rgba(0,0,0,0.2)"
-        })
-      }
-      onMouseLeave={(e) =>
-        Object.assign(e.currentTarget.style, {
-          transform: "none",
-          boxShadow: card.boxShadow
-        })
-      }
-    >
-      <h3 style={{ ...cardTitle, color }}>{service}</h3>
-      <p style={qtyText}>{qty}</p>
-      <p style={priceText}>{price}</p>
-
-      <button
-        style={{ ...buyBtn, background: color }}
-        onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
-        onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-      >
-        Comprar ahora
-      </button>
-    </div>
-  );
-}
-
-/* STYLES */
-
-const page = {
-  padding: "80px 20px",
-  maxWidth: "1200px",
-  margin: "0 auto",
-  textAlign: "center"
+const styles = {
+  container: {
+    padding: "60px 20px",
+    maxWidth: "1200px",
+    margin: "0 auto",
+    fontFamily: "system-ui, -apple-system, BlinkMacSystemFont"
+  },
+  title: {
+    fontSize: "42px",
+    fontWeight: "800",
+    textAlign: "center"
+  },
+  subtitle: {
+    textAlign: "center",
+    marginBottom: "50px",
+    color: "#666",
+    fontSize: "18px"
+  },
+  grid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+    gap: "30px"
+  },
+  card: {
+    background: "#ffffff",
+    borderRadius: "16px",
+    padding: "24px",
+    boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
+    transition: "transform .3s, box-shadow .3s"
+  },
+  cardTitle: {
+    fontSize: "24px",
+    marginBottom: "16px"
+  },
+  item: {
+    display: "flex",
+    justifyContent: "space-between",
+    padding: "8px 0",
+    borderBottom: "1px solid #eee",
+    fontSize: "15px"
+  },
+  price: {
+    fontWeight: "600"
+  },
+  button: {
+    display: "block",
+    marginTop: "20px",
+    padding: "12px",
+    textAlign: "center",
+    background: "#111",
+    color: "#fff",
+    borderRadius: "10px",
+    textDecoration: "none",
+    fontWeight: "600"
+  }
 };
 
-const title = {
-  fontSize: "42px",
-  fontWeight: "800",
-  marginBottom: "10px"
-};
-
-const subtitle = {
-  fontSize: "18px",
-  color: "#555",
-  marginBottom: "60px"
-};
-
-const grid = {
-  display: "grid",
-  gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-  gap: "30px"
-};
-
-const card = {
-  background: "#fff",
-  padding: "35px 25px",
-  borderRadius: "16px",
-  boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
-  transition: "all 0.35s ease"
-};
-
-const cardTitle = {
-  fontSize: "20px",
-  marginBottom: "15px"
-};
-
-const qtyText = {
-  fontSize: "28px",
-  fontWeight: "700",
-  marginBottom: "10px"
-};
-
-const priceText = {
-  fontSize: "26px",
-  fontWeight: "800",
-  marginBottom: "25px"
-};
-
-const buyBtn = {
-  border: "none",
-  color: "#fff",
-  padding: "14px 25px",
-  borderRadius: "10px",
-  fontSize: "16px",
-  fontWeight: "600",
-  cursor: "pointer",
-  transition: "opacity 0.25s ease"
-};
