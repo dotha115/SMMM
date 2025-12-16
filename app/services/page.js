@@ -45,96 +45,95 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <main style={styles.container}>
-      <h1 style={styles.title}>Servicios Disponibles</h1>
-      <p style={styles.subtitle}>
+    <main className="container">
+      <h1 className="title">Servicios Disponibles</h1>
+      <p className="subtitle">
         Selecciona un servicio y comienza a crecer hoy mismo
       </p>
 
-      <div style={styles.grid}>
+      <div className="grid">
         {services.map((service, i) => (
           <div
             key={i}
-            style={{
-              ...styles.card,
-              borderTop: `6px solid ${service.color}`
-            }}
+            className="card"
+            style={{ borderTop: `6px solid ${service.color}` }}
           >
-            <h2 style={{ ...styles.cardTitle, color: service.color }}>
-              {service.category}
-            </h2>
+            <h2 style={{ color: service.color }}>{service.category}</h2>
 
             {service.items.map((item, j) => (
-              <div key={j} style={styles.item}>
+              <div key={j} className="item">
                 <span>{item.name}</span>
-                <span style={styles.price}>{item.price}</span>
+                <strong>{item.price}</strong>
               </div>
             ))}
 
-            <Link href="/" style={styles.button}>
+            <Link href="/" className="button">
               Comprar Ahora
             </Link>
           </div>
         ))}
       </div>
+
+      <style jsx>{`
+        .container {
+          padding: 60px 20px;
+          max-width: 1200px;
+          margin: 0 auto;
+          font-family: system-ui, -apple-system, BlinkMacSystemFont;
+        }
+
+        .title {
+          font-size: 42px;
+          font-weight: 800;
+          text-align: center;
+        }
+
+        .subtitle {
+          text-align: center;
+          margin-bottom: 50px;
+          color: #666;
+          font-size: 18px;
+        }
+
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+          gap: 30px;
+        }
+
+        .card {
+          background: #ffffff;
+          border-radius: 16px;
+          padding: 24px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .item {
+          display: flex;
+          justify-content: space-between;
+          padding: 8px 0;
+          border-bottom: 1px solid #eee;
+          font-size: 15px;
+        }
+
+        .button {
+          display: block;
+          margin-top: 20px;
+          padding: 12px;
+          text-align: center;
+          background: #111;
+          color: #fff;
+          border-radius: 10px;
+          text-decoration: none;
+          font-weight: 600;
+        }
+      `}</style>
     </main>
   );
 }
-
-const styles = {
-  container: {
-    padding: "60px 20px",
-    maxWidth: "1200px",
-    margin: "0 auto",
-    fontFamily: "system-ui, -apple-system, BlinkMacSystemFont"
-  },
-  title: {
-    fontSize: "42px",
-    fontWeight: "800",
-    textAlign: "center"
-  },
-  subtitle: {
-    textAlign: "center",
-    marginBottom: "50px",
-    color: "#666",
-    fontSize: "18px"
-  },
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-    gap: "30px"
-  },
-  card: {
-    background: "#ffffff",
-    borderRadius: "16px",
-    padding: "24px",
-    boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
-    transition: "transform .3s, box-shadow .3s"
-  },
-  cardTitle: {
-    fontSize: "24px",
-    marginBottom: "16px"
-  },
-  item: {
-    display: "flex",
-    justifyContent: "space-between",
-    padding: "8px 0",
-    borderBottom: "1px solid #eee",
-    fontSize: "15px"
-  },
-  price: {
-    fontWeight: "600"
-  },
-  button: {
-    display: "block",
-    marginTop: "20px",
-    padding: "12px",
-    textAlign: "center",
-    background: "#111",
-    color: "#fff",
-    borderRadius: "10px",
-    textDecoration: "none",
-    fontWeight: "600"
-  }
-};
-
