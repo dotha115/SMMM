@@ -1,3 +1,5 @@
+"use client";
+export const dynamic = "force-dynamic";
 export default function ServicesPage() {
   return (
     <div style={page}>
